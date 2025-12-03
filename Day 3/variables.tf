@@ -24,5 +24,12 @@ variable "desired_capacity"{
     default = "2"
 }
 variable "availability_zones"{
-    default = ["ap-soth-1a","ap-south-1b",ap-south-1c"]
+    default = ["ap-soth-1a","ap-south-1b"]
+}
+variable "vpc_id"{
+    default = "vpc-0d731d69b3ef94d7f"
+}
+
+variable "subnets"{
+    default =["subnet-0b49fd63dd2bab41a","subnet-010654d024380b234","subnet-02a4fddd2def35ba5"]
 }
