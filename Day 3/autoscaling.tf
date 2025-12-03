@@ -92,3 +92,61 @@ resource "aws_autoscaling_policy""asp-home"{
         target_value = 50
     }
 }
+
+
+
+resource "aws_autoscaling_group" "asg-laptop" {
+    name = "asg-laptop"
+    min_size = var.min_size
+    max_size = var.max_size
+    desired_capacity = var.desired_capacity
+    launch_template = {
+        id = aws_launch_template.launch_template_laptop.id
+    }
+    availability_zones = var.availability_zones
+    tag {
+        env = var.env
+    }
+
+}
+
+resource "aws_autoscaling_policy""asp-laptop"{
+    name = "asp-cloth"
+    autoscaling_group_name = ws_autoscaling_group.asg-laptop.name
+    policy_type = "TargetTrackingScaling"
+    target_tracking_configuration {
+        predefined_metric_type {
+            predefined_metric_type = "CPUUtilization"
+        }
+        target_value = 50
+    }
+}
+
+
+
+resource "aws_autoscaling_group" "asg-cloth" {
+    name = "asg-cloth"
+    min_size = var.min_size
+    max_size = var.max_size
+    desired_capacity = var.desired_capacity
+    launch_template = {
+        id = aws_launch_template.launch_template_cloth.id
+    }
+    availability_zones = var.availability_zones
+    tag {
+        env = var.env
+    }
+
+}
+
+resource "aws_autoscaling_policy""asp-cloth"{
+    name = "asp-cloth"
+    autoscaling_group_name = ws_autoscaling_group.asg-cloth.name
+    policy_type = "TargetTrackingScaling"
+    target_tracking_configuration {
+        predefined_metric_type {
+            predefined_metric_type = "CPUUtilization"
+        }
+        target_value = 50
+    }
+}

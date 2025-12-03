@@ -14,3 +14,15 @@ variable "env"{
     default = "dev"
 }
 
+variable "min_size"{
+    default = "2"
+}
+variable "max_size"{
+    default = "5"
+}
+variable "desired_capacity"{
+    default = "2"
+}
+variable "availability_zones"{
+    default = ["ap-soth-1a","ap-south-1b",ap-south-1c"]
+}
