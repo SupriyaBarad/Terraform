@@ -95,9 +95,9 @@ resource "aws_autoscaling_group" "asg-laptop" {
 
 }
 
-resource "aws_autoscaling_policy""asp-laptop"{
-    name = "asp-cloth"
-    autoscaling_group_name = ws_autoscaling_group.asg-laptop.name
+resource "aws_autoscaling_policy" "asp-laptop"{
+    name = "asp-laptop"
+    autoscaling_group_name = aws_autoscaling_group.asg-laptop.name
     policy_type = "TargetTrackingScaling"
     target_tracking_configuration {
         predefined_metric_specification {
