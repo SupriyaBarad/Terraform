@@ -57,9 +57,10 @@ resource "aws_autoscaling_group" "asg-home" {
         value = var.env
         propagate_at_launch = true
     }
-
-
+     target_group_arns = [aws_lb_target_group.tg_home.arn]
 }
+
+
 
 resource "aws_autoscaling_policy""asp-home"{
     name = "asp-home"
@@ -71,9 +72,8 @@ resource "aws_autoscaling_policy""asp-home"{
         }
         target_value = 50
     }
-    target_group_arns = [aws_lb_target_group.tg_home.arn]
+    
 }
-
 
 
 resource "aws_autoscaling_group" "asg-laptop" {
