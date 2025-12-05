@@ -1,5 +1,5 @@
 resource "aws_lb_target_group" "tg_home"{
-    name ="tg_home"
+    name ="tg-home"
     port = 80
     protocol = "HTTP"
     vpc_id = var.vpc_id
@@ -9,7 +9,7 @@ resource "aws_lb_target_group" "tg_home"{
 }
 
 resource "aws_lb_target_group" "tg_laptop"{
-    name ="tg_laptop"
+    name ="tg-laptop"
     port = 80
     protocol = "HTTP"
     vpc_id = var.vpc_id
@@ -22,7 +22,7 @@ resource "aws_lb_target_group" "tg_laptop"{
 }
 
 resource "aws_lb_target_group" "tg_cloth"{
-    name ="tg_cloth"
+    name ="tg-cloth"
     port = 80
     protocol = "HTTP"
     vpc_id = var.vpc_id
@@ -39,21 +39,16 @@ resource "aws_lb" "app_lb" {
   name               = "app-lb"
   internal           = false
   load_balancer_type = "application"
-  security_groups    = [aws_security_group.lb_sg.id]
+  security_groups    = [aws_security_group.alb_sg.id]
   subnets            = var.subnets
 
-  enable_deletion_protection = true
+ 
 
-  access_logs {
-    bucket  = aws_s3_bucket.lb_logs.id
-    prefix  = "test-lb"
-    enabled = true
-  }
-
-  tags = {
-    Environment = "production"
+ tags = {
+    env = var.env
   }
 }
+
 
 resource "aws_security_group" "alb_sg" {
     name = "alb-sg"
