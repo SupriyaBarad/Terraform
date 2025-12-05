@@ -68,7 +68,7 @@ resource "aws_autoscaling_policy""asp-home"{
     policy_type = "TargetTrackingScaling"
     target_tracking_configuration {
         predefined_metric_specification {
-            predefined_metric_type = "CPUUtilization"
+            predefined_metric_type = "ASGAverageCPUUtilization"
         }
         target_value = 50
     }
@@ -101,7 +101,7 @@ resource "aws_autoscaling_policy" "asp-laptop"{
     policy_type = "TargetTrackingScaling"
     target_tracking_configuration {
         predefined_metric_specification {
-            predefined_metric_type = "CPUUtilization"
+            predefined_metric_type = "ASGAverageCPUUtilization"
         }
         target_value = 50
     }
@@ -133,7 +133,7 @@ resource "aws_autoscaling_policy""asp-cloth"{
     policy_type = "TargetTrackingScaling"
     target_tracking_configuration {
         predefined_metric_specification {
-            predefined_metric_type = "CPUUtilization"
+            predefined_metric_type = "ASGAverageCPUUtilization"
         }
         target_value = 50
     }
