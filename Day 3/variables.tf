@@ -24,7 +24,7 @@ variable "desired_capacity"{
     default = "2"
 }
 variable "availability_zones"{
-    default = ["ap-soth-1a","ap-south-1b"]
+    default = ["ap-south-1a","ap-south-1b"]
 }
 variable "vpc_id"{
     default = "vpc-0d731d69b3ef94d7f"
