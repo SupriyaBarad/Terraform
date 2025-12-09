@@ -5,7 +5,7 @@ resource "aws_instance" "my_instance" {
    subnet_id = var.subnet_id
    key_name = var.key_pair
    tags = {
-    name = ${var.project}-instance
+    name = "${var.project}-instance"
    }
 }
 
@@ -13,7 +13,7 @@ resource "aws_instance" "my_instance" {
 resource "aws_security_group" "my_sg" {
     vpc_id = var.vpc_id
      tags = {
-    name = ${var.project}-sg
+    name = "${var.project}-sg"
    }
     description = "enable 80 and 22"
     ingress {
